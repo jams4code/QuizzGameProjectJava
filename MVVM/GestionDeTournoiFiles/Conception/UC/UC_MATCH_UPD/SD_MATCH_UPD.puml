@@ -1,0 +1,45 @@
+@startuml SSD_MATCH_UPD
+hide footbox
+autonumber
+skinparam shadowing false
+actor User as u
+participant ":View" as v <<view>>
+participant ":Ctrl" as c <<ctrl>>
+participant ":SelectedTrnm" as t <<entity>>
+participant ":newMatch" as nm <<entity>>
+participant ":oldMatch" as om <<entity>>
+activate u
+    u -> v: pl1.setValue() 
+    activate v
+    v -> c:getOpponents(pl1.getValue())
+    activate c
+    c -> t: getOpponents(p)
+    activate t
+    t -> t: setSelectedPlayer(p)
+    deactivate t
+    deactivate c
+    v-> v: initSelectionPlayer()
+    deactivate v
+alt Modifie joueur 2
+    u -> v:  pl2.setValue() 
+    activate v
+    deactivate v
+else Modifie Résultat
+    u -> v:  res.setValue() 
+    activate v
+    deactivate v
+end
+u -> v : btUpdMatch.setOnAction()
+activate v
+v -> c : updateSelectedMatch(oldPl1,oldPl2,oldRes,newPl1,newPl2,newRes):boolean
+activate c
+create om
+c -> om : newMatch(oldPl1,oldPl2,plRes)
+create nm
+c -> nm : newMatch(newPl1,newPl2,newRes)
+c->t : updateSelectedMatch(oldM,newM)
+activate t
+t->t:updateMatch(oldM,newM)
+deactivate t
+v -> v:displayMatch(selectedTrnm().getMatchs())
+@enduml

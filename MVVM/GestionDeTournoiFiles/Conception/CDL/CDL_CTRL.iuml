@@ -1,0 +1,10 @@
+class Ctrl <<Controller>>{
+    -Federation fd
+    -Tournoi selected
+    +TrnmSelected(index:int)
+    +matchSelected(index:int)
+    +addMatch(m:Match)
+    +delSelectedMatch(m:Match)
+    +updateSelectedMatch(old:Matc,newM:Match)
+    +getOpponent(p:Player)
+}

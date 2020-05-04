@@ -1,0 +1,15 @@
+class Federation <<Entity>>{
+    -nom : String
+    -tournois : List<Tournoi>
+    -numTournoiSelected: int
+    +initListTrnm()
+    +select(index:int)
+    +unSelect()
+    +addTrnm(t:Tournoi)
+    +getTournois():List<Tournoi>
+    +getTournoisName():List<String>
+    +nbTrnm():int
+    +selectedTrnm():Tournoi
+    +update(O:Observaeble,args:Object)
+    +notif(typeNotif:Notif )
+}

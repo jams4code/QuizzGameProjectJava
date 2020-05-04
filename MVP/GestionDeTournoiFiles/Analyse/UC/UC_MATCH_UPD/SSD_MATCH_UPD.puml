@@ -1,0 +1,32 @@
+@startuml SSD_MATCH_UPD
+hide footbox
+autonumber
+skinparam shadowing false
+actor User as u
+participant System as s 
+activate u
+alt Modifie joueur 1
+    u -> s: Mise à jour joueur 1
+    activate s
+    deactivate s
+else Modifie joueur 2
+    u -> s:  Mise à jour joueur 2
+    activate s
+    deactivate s
+else Modifie Résultat
+    u -> s:  Mise à jour résultat
+    activate s
+    deactivate s
+end
+u -> s : Clique sur le bouton "UPDATE"
+activate s
+s -> s : Vérification Entrée valide
+alt ok
+    s -> s : Mise à jour des données
+    deactivate s
+else not ok
+    s -> u : Message d'erreur
+    activate s
+    deactivate s
+end
+@enduml

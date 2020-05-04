@@ -1,0 +1,51 @@
+class View <<view>>{
+    -trnmZone : VBox
+    -listTrnm : ListView<String>
+    -lbTrnm : Label
+    -bottomZone : HBox
+    -plRegZone : VBox
+    -listPlReg : ListView<String>
+    -lbPlReg : Label
+    -matchZone : VBox
+    -matchListZone : VBox
+    -matchEditZone : HBox
+    -edit : List<BorderPane>
+    -listMatch : TableView<Match> 
+    -plOne : TableColumn <Match,Player> 
+    -plTwo : TableColumn <Match,Player> 
+    -resu : TableColumn <Match,Match.Resultat> 
+    -lbMatch : Label
+    -lbPr1 : Label
+    -lbPr2 : Label
+    -lbRes : Label
+    -btAddMatch : Button
+    -btUpdMatch : Button
+    -btDelMatch : Button
+    -pl1 : ComboBox<String>
+    -pl2 : ComboBox<String>
+    -res : ComboBox<String>
+    -ctrl : Ctrl
+    +configComponents()
+    +configTrnmZone()
+    +fillTrnmList(trnm:List<String>)
+    +configPlRegZone()
+    +configMatchZone()
+    +configBottomZone()
+    +configWindow()
+    +loadingButtonSelected()
+    +loadingButtonAdd(f:Federation)
+    +borderPaning(c:ComboBox,l:Label)
+    +borderPaning(b:Button)
+    +defaultValues(f:Federation)
+    +fillCbbx(p1:List<String>,p2:List<String>,res:List<String>)
+    +configListeners()
+    +configListenerTrnmZone();
+    +configListenersMatchListZone();
+    +configListenersMatchEditZone();
+    +getListViewTrnm():SelectionModel<String>
+    +addable(p1:Player,p2:Player):boolean
+    +displayMatch(m:List<String>)
+    +getListViewMatch():SelectionModel<String> 
+    +initSelectionPlayers(f:Federation)
+    +update(O:Observaeble,args:Object)
+}

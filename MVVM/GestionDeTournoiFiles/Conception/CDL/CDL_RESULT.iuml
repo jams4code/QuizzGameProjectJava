@@ -1,0 +1,5 @@
+enum Resultat <<enum>>{
+    GAIN_JOUEUR1
+    GAIN_JOUEUR2
+    MATCH_NUL
+}

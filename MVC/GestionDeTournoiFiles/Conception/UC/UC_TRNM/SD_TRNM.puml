@@ -1,0 +1,38 @@
+@startuml SD_TRNM
+hide footbox
+autonumber
+skinparam shadowing false
+actor User as u
+participant ":View" as v <<view>>
+participant ":Ctrl" as c <<ctrl>>
+participant ":Federation" as f <<entity>>
+activate v
+activate u
+v -> f : getTournoisName():List<String>
+activate f
+f --> v: t:List<String>
+deactivate f
+v->v :fillTrnmList(t)
+u->v:setSelectionListViewTrnm(String tSel)
+activate c
+v -> c : TrnmSelected(indTSel:int)
+c-> f : select(indTSel:int)
+activate f
+f -> f : setNumTournoiSelected(indTSel:int)
+v -> v : displayLstPL(selectedTrnm().getPlayerName())
+v -> v : displayMatch(selectedTrnm().getMatchs()
+v -> v : fillCbbx(selectedTrnmPl1:List<String>,selectedTrnmpl2:List<String>,selectedTrnmRes:List<String>);
+deactivate f
+deactivate v
+alt ajouter un match
+    ref over u,v,c,f : SD_MATCH_ADD
+else selectionne un match
+    u ->v : setSelectionListViewMatch(String mSel)
+    alt update match
+        ref over u, v, c, f : SD_MATCH_UPD
+    else Delete match
+        ref over u, v, c, f : SD_MATCH_DEL
+    end
+end
+
+@enduml

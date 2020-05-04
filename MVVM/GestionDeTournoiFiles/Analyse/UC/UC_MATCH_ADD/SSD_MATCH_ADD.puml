@@ -1,0 +1,26 @@
+@startuml SSD_MATCH_ADD
+hide footbox
+autonumber
+skinparam shadowing false
+actor User as u
+participant System as s 
+activate u
+u -> s : séléctionne joueur 1
+activate s
+deactivate s 
+u -> s : séléctionne joueur 2
+activate s
+deactivate s 
+u -> s : séléctionne un Résultat
+activate s
+deactivate s 
+u -> s : clique sur le bouton "ADD"
+s -> s : Vérification Entrée valide
+alt ok
+    activate s
+    s -> s : ajoute un match
+    deactivate s
+else not ok
+    s -> u : Message d'erreur
+end
+@enduml

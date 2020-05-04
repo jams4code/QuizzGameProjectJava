@@ -1,0 +1,20 @@
+class Tournoi <<Entity>>{
+    - matchs : List<Match>
+    - players : List<Player>
+    - nom : String
+    - numMatchSelected : int
+    - notif : Notif
+    -selectedPlayer:Player
+    + initPlayer()
+    + getPlayersName():List<String>
+    + selectedMatch():Match
+    + select(index:int )
+    + hasMatch(m:Match): boolean
+    + nbMatchs():int
+    + addMatch(m:Match): boolean
+    + deleteMatch(m:Match): boolean
+    + updateMatch(oldM:Match,newM:Match): boolean
+    + notif(typeNotif:Notif )
+    + getOpponent(p:Player )
+    + unselect()
+}

@@ -1,0 +1,8 @@
+class Match <<Entity>>{
+    - p1 : Player
+    - p2 : Player
+    - r : Resultat
+    +isValidMatch(): boolean
+    +getP1Name():String
+    +getP2Name():String
+}

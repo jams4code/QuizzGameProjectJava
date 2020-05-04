@@ -1,0 +1,23 @@
+@startuml
+
+
+'hide members
+left to right direction
+!include Tournois\anc31819a_gr6\GestionDeTournoiFiles/Conception/CDL/CDL_FEDERATION.iuml
+!include Tournois\anc31819a_gr6\GestionDeTournoiFiles/Conception/CDL/CDL_MATCH.iuml
+!include Tournois\anc31819a_gr6\GestionDeTournoiFiles/Conception/CDL/CDL_NOTIF.iuml
+!include Tournois\anc31819a_gr6\GestionDeTournoiFiles\Conception\CDL\CDL_VIEW.iuml
+!include Tournois\anc31819a_gr6\GestionDeTournoiFiles/Conception/CDL/CDL_PLAYER.iuml
+!include Tournois\anc31819a_gr6\GestionDeTournoiFiles/Conception/CDL/CDL_RESULT.iuml
+!include Tournois\anc31819a_gr6\GestionDeTournoiFiles/Conception/CDL/CDL_TRNM.iuml
+!include Tournois\anc31819a_gr6\GestionDeTournoiFiles/Conception/CDL/CDL_CTRL.iuml
+Federation --|> Ctrl
+Tournoi --|> Federation
+Match --|> Tournoi
+Player --|> Tournoi
+Notif +-- Tournoi
+Notif +-- Federation
+Resultat +-- Match
+Player --|> Match
+Ctrl --|> View 
+@enduml

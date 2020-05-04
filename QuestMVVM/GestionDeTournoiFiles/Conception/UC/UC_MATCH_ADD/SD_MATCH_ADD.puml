@@ -1,0 +1,36 @@
+@startuml SD_MATCH_ADD
+hide footbox
+autonumber
+skinparam shadowing false
+actor User as u
+participant ":AlertBox" as ab <<view>>
+participant ":View" as v <<view>>
+participant ":Ctrl" as c <<ctrl>>
+participant ":Federation" as f <<entity>> 
+participant ":Match" as m <<entity>>
+
+activate u
+u -> v : pl1.setValue(mSel.getPl1Name);
+activate v
+deactivate v 
+u -> v : pl2.setValue(mSel.getPl2Name);
+activate v
+deactivate v 
+u -> v : res.setValue(mSel.getresName);
+activate v
+deactivate v 
+u -> v : btAddMatch.setOnAction();
+activate v
+v-> c : addMatch(pl1.getValue(),p2.getValue(),res.getValue()):boolean
+activate c
+create m
+c->m : m = new Match(p1,p2,res)
+c->t : addMatch(m):boolean
+activate t
+alt ok
+    v -> v : displayMatch(selectedTrnm().getMatchs()):
+else not ok
+    create ab
+    v -> ab:  AlertBox("Error","Opération impossible")
+end
+@enduml

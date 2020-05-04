@@ -1,0 +1,23 @@
+@startuml SSD_MATCH_DEL
+hide footbox
+autonumber
+skinparam shadowing false
+actor User as u
+participant System as s 
+activate u
+u -> s : clique sur le bouton "DELETE"
+activate s
+s -> u : affiche une fenetre "POP-UP" de confirmation
+deactivate s
+alt confirmer "DELETE"
+    u -> s: clique sur confirmer
+    activate s
+    s -> s: Supprime le match
+    deactivate s
+else annuler
+    u -> s: clique sur annuler
+    activate s
+    s -> s: quitte la fenetre "POP-UP"
+    deactivate s
+end
+@enduml

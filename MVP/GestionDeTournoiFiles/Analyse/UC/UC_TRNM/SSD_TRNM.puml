@@ -1,0 +1,28 @@
+@startuml SSD_TRNM
+hide footbox
+autonumber
+skinparam shadowing false
+actor User as u
+participant System as s 
+activate u
+activate s
+s -> u : Affiche les tournois
+deactivate s
+u -> s : Séléctionne un tournois
+activate s 
+s -> u : affiche les participants
+s -> u : affiche les matchs
+deactivate s
+opt Ajouter un match
+    ref over u, s : SSD_MATCH_ADD
+else upd/del un match
+    u -> s : séléctionne un match
+    activate s
+    alt Update
+        ref over u,s: SSD_MATCH_UPD
+    else Delete
+        ref over u,s: SSD_MATCH_DEL
+    end
+end
+deactivate s
+@enduml

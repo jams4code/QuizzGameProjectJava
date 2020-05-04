@@ -1,0 +1,21 @@
+@startuml CDD
+skinparam Shadowing false
+skinparam ClassAttributeIconSize 0
+
+class Match{
+    r : Resultat
+}
+class Player {
+    nom : String
+}
+class Tournoi{
+    nom : String
+}
+class Federation{
+    nom : String
+}
+Match "*" -- "1" Tournoi : < is made of
+Player "2" -- "1" Match : > played in
+Player "*" -- "1" Tournoi : > are registered in
+Federation "1" -- "*" Tournoi : > contains
+@enduml
